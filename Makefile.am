@@ -110,7 +110,7 @@ sysagentd_LDADD = libumd.la \
                   ${LUA_LIBS} \
                   -ldl
 if ENABLE_COAP
-sysagentd_LDADD += libumrpc.la
+sysagentd_LDADD += libumrpc.la ${COAP_LIBS}
 sysagentd_SOURCES += src/include/umrpc.h
 endif
 
@@ -312,3 +312,10 @@ endif
 if ENABLE_DBUS
 include src/services/sysagent/plugins/dbus/Makefile.am
 endif
+
+# coap support plugin
+if ENABLE_COAP
+include src/services/sysagent/plugins/coap/Makefile.am
+endif
+
+
